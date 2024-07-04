@@ -20,7 +20,7 @@ export default function Navbar() {
         <li className="nav-item nav-link">
           <Link className={NavStyle.link} to="/sign-up">
             Sign up
-          </Link>{' '}
+          </Link>
           {/*come back and add log out button which just deletes the token */}
         </li>
       </ul>
