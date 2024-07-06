@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { DateTime } from 'luxon';
+
 export default function Blogpage() {
   const { postid } = useParams();
 
@@ -50,6 +52,11 @@ export default function Blogpage() {
       <div className="card m-2 p-4">
         <h1 className="card-title">{post.title}</h1>
         <h3 className="card-subtitle">{`By: ${post.author_id.first_name} ${post.author_id.last_name}`}</h3>
+        <h6 className="card-subtitle" style={{ color: 'gray' }}>
+          {DateTime.fromISO(post.date_created).toLocaleString(
+            DateTime.DATETIME_MED
+          )}
+        </h6>
         <p className="card-text">{post.text_content}</p>
       </div>
     </div>

@@ -1,5 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import { DateTime } from 'luxon';
+import { Link } from 'react-router-dom';
 
 export default function Home() {
   const [allPosts, setAllPosts] = useState([]); //by default, empty array
@@ -44,15 +46,22 @@ export default function Home() {
   return (
     <div className="container-sm" style={{ maxWidth: '1000px' }}>
       {allPosts.map((post) => (
-        <div className="card m-2 p-2">
-          <h3 className="card-title">{post.title}</h3>
-          <h4 className="card-subtitle">{`By: ${post.author_id.first_name} ${post.author_id.last_name}`}</h4>
-          <p className="card-text">
-            {post.text_content.length < 400 //if blogpost text content is greater than 50, post only part of it
-              ? post.text_content
-              : post.text_content.substring(0, 400) + '...'}
-          </p>
-        </div>
+        <Link to={`/blogpost/${post._id}`} style={{ textDecoration: 'none' }}>
+          <div className="card m-2 p-2">
+            <h2 className="card-title">{post.title}</h2>
+            <h4 className="card-subtitle">{`By: ${post.author_id.first_name} ${post.author_id.last_name}`}</h4>
+            <h6 className="card-subtitle" style={{ color: 'gray' }}>
+              {DateTime.fromISO(post.date_created).toLocaleString(
+                DateTime.DATETIME_MED
+              )}
+            </h6>
+            <p className="card-text">
+              {post.text_content.length < 400 //if blogpost text content is greater than 50, post only part of it
+                ? post.text_content
+                : post.text_content.substring(0, 400) + '...'}
+            </p>
+          </div>
+        </Link>
       ))}
     </div>
   );
