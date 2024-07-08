@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { DateTime } from 'luxon';
+import CommentSection from '../general/CommentSection';
 
 export default function Blogpage() {
   const { postid } = useParams();
 
-  const [post, setPost] = useState(null); //by default, empty array
+  const [post, setPost] = useState(null); //by default, empty null
   const [loading, setLoading] = useState(true); //loading state is true by default
   const [errorMessage, setErrorMessage] = useState(null);
 
@@ -59,6 +60,7 @@ export default function Blogpage() {
         </h6>
         <p className="card-text">{post.text_content}</p>
       </div>
+      <CommentSection postid={postid}></CommentSection>
     </div>
   );
 }
