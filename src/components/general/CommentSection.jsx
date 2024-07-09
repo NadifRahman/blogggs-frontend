@@ -50,6 +50,7 @@ export default function CommentSection({ postid }) {
       setFormData({ comment_string: '' });
     } catch (error) {
       alert('There was a network error, try again later');
+      //replace with something better later
     }
     {
     }
