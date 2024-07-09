@@ -1,8 +1,7 @@
 import React from 'react';
 import loginStyle from './login.module.css';
-import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import { useOutletContext } from 'react-router-dom';
+import { useOutletContext, Link, useNavigate } from 'react-router-dom';
 
 export default function Login() {
   //jwtToken is null if not logged in, token string otherwise
@@ -16,6 +15,8 @@ export default function Login() {
 
   /*errorMessages is null by default, otherwise its an array of strings*/
   const [errorMessages, setErrorMessages] = useState(null);
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -58,7 +59,7 @@ export default function Login() {
         console.log(`token from serv ${data.token}`);
         console.log(`sucessful set the token ${jwtToken}`);
         console.log(`set token ${localStorage.getItem('jwtToken')}`);
-        //CHANGE RENAVIGATE THIS LATER
+        navigate('/');
       }
     } catch (err) {
       setErrorMessages(['There is a network error, please try again later']);

@@ -48,7 +48,9 @@ export default function CommentSection({ postid }) {
       //this triggers reloading comments from useEffect
       setReloadTrigger((reloadTrigger) => !reloadTrigger);
       setFormData({ comment_string: '' });
-    } catch (error) {}
+    } catch (error) {
+      alert('There was a network error, try again later');
+    }
     {
     }
   }
