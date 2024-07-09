@@ -95,13 +95,13 @@ export default function CommentSection({ postid }) {
   return (
     <div className="card card m-2 p-4">
       {!jwtToken ? (
-        <div className="">Please log in</div>
+        <div className="my-2">Please log in to comment</div>
       ) : (
         <div className="card">
           <form action="" method="post" onSubmit={handleSubmit}>
             <div className="form-group p-2">
               <label htmlFor="comment_string" className="my-2">
-                Type your comment:{' '}
+                Type your comment:
               </label>
               <textarea
                 className="form-control my-2"
