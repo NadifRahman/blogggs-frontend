@@ -9,18 +9,25 @@ export default function Navbar({ jwtToken, logOut }) {
      bg-primary px-3 sticky-top"
     >
       <Link className="navbar-brand" to="/">
-        Bloggs
+        Blogggs
       </Link>
 
       <ul className="navbar-nav mr-auto">
         {jwtToken ? (
-          <li
-            className="nav-item nav-link"
-            style={{ color: 'white', cursor: 'pointer' }}
-            onClick={logOut}
-          >
-            Log out
-          </li>
+          <>
+            <li className="nav-item nav-link">
+              <Link className={NavStyle.link} to="/createblog">
+                Create blog
+              </Link>
+            </li>
+            <li
+              className="nav-item nav-link"
+              style={{ color: 'white', cursor: 'pointer' }}
+              onClick={logOut}
+            >
+              Log out
+            </li>
+          </>
         ) : (
           <>
             <li className="nav-item nav-link ">
