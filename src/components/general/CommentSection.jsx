@@ -15,11 +15,9 @@ export default function CommentSection({ postid }) {
 
   function handleChange(e) {
     setFormData({ comment_string: `${e.target.value}` });
-    console.log(formData);
   }
 
   async function handleSubmit(e) {
-    console.log(e.target);
     e.preventDefault();
     setLoading(true); //set to true to cause loading state
 

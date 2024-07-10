@@ -20,7 +20,6 @@ export default function Login() {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    console.log(import.meta.env.VITE_BACKEND_URI);
   };
 
   const handleSubmit = async (e) => {
@@ -44,21 +43,17 @@ export default function Login() {
       if (response.status === 401 || response.status === 404) {
         //if problem w/ username or pass
         setErrorMessages([data.message]);
-        console.log('some wrong with username or password');
       } else if (response.status === 422) {
         //if validation errors
         setErrorMessages(data.errors); //data.errors is an array of string
       } else if (!response.ok) {
         //some other error
         setErrorMessages(['There was some error, please try again later']);
-        console.log('some wrong with response');
       } else {
         //response was good
         setErrorMessages(null); //set to null cause theres no issues
         setToken(data.token);
-        console.log(`token from serv ${data.token}`);
-        console.log(`sucessful set the token ${jwtToken}`);
-        console.log(`set token ${localStorage.getItem('jwtToken')}`);
+
         navigate('/');
       }
     } catch (err) {

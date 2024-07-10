@@ -23,9 +23,9 @@ export default function Home() {
         const responseData = await response.json();
 
         setAllPosts(responseData.posts);
-        setError(null);
+        setErrorMessage(null);
       } catch (error) {
-        setError(error.message);
+        setErrorMessage('There is a network error, please try again later');
         setAllPosts([]);
       } finally {
         setLoading(false);
@@ -40,7 +40,13 @@ export default function Home() {
   }
 
   if (errorMessage) {
-    return <div>There has been an error</div>; //need to style these
+    return (
+      <div className="container">
+        <div className="alert alert-warning mt-2" role="alert">
+          {errorMessage}
+        </div>
+      </div>
+    ); //need to style these
   }
 
   return (
