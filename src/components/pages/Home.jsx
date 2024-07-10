@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { DateTime } from 'luxon';
 import { Link } from 'react-router-dom';
+import logo from '../../../public/blogggs-logo.png';
 
 export default function Home() {
   const [allPosts, setAllPosts] = useState([]); //by default, empty array
@@ -51,6 +52,17 @@ export default function Home() {
 
   return (
     <div className="container-sm" style={{ maxWidth: '1000px' }}>
+      <img
+        src={logo}
+        alt=""
+        style={{
+          maxWidth: '300px',
+          display: 'block',
+          marginLeft: 'auto',
+          marginRight: 'auto',
+        }}
+        className="p-4"
+      />
       {allPosts.map((post) => (
         <Link to={`/blogpost/${post._id}`} style={{ textDecoration: 'none' }}>
           <div className="card m-2 p-2">

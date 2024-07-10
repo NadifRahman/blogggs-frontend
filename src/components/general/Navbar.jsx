@@ -1,14 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import NavStyle from './navbar.module.css';
-
+import icon from '../../../public/blogggs-favicon-white.png';
 export default function Navbar({ jwtToken, logOut }) {
   return (
     <nav
       className="navbar navbar-expand-lg navbar-dark
      bg-primary px-3 sticky-top"
     >
-      <Link className="navbar-brand" to="/">
+      <Link
+        className="navbar-brand d-flex justify-content-center align-items-center"
+        to="/"
+      >
+        <img src={icon} alt="" style={{ height: '1.5em' }} />
         Blogggs
       </Link>
 
